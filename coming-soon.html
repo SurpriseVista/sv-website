@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise Vista Gifting Solutions | Coming Soon</title>
+  <meta name="description" content="Surprise Vista Gifting Solutions is launching soon. Personalized gifting experiences designed to unbox happiness."/>
+  <link rel="icon" href="favicon.png"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ff7a59, #ff4d6d);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .logo {
+      max-width: 280px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 50px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.15);
+      padding: 30px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .countdown {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .email-box input {
+      padding: 14px;
+      width: 260px;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+    }
+
+    .email-box button {
+      padding: 14px 24px;
+      border-radius: 30px;
+      border: none;
+      background: #fff;
+      color: #ff4d6d;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="logo.png" alt="Surprise Vista Logo" class="logo"/>
+
+    <h1>Surprise Vista Gifting Solutions</h1>
+    <div class="subtitle">Unbox Happiness. Launching Soon.</div>
+
+    <div class="features">
+      <div class="feature">
+        <h3>🎁 Personalized Gifting</h3>
+        <p>Curated gift experiences tailored to emotions and occasions.</p>
+      </div>
+
+      <div class="feature">
+        <h3>🚚 Seamless Delivery</h3>
+        <p>Reliable and elegant packaging delivered on time, every time.</p>
+      </div>
+
+      <div class="feature">
+        <h3>💝 Corporate & Bulk Solutions</h3>
+        <p>Smart gifting solutions for teams, clients, and celebrations.</p>
+      </div>
+    </div>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="email-box">
+      <input type="email" placeholder="Enter your email" />
+      <button>Notify Me</button>
+    </div>
+
+    <footer>
+      © 2026 Surprise Vista Gifting Solutions
+    </footer>
+  </div>
+
+<script>
+  const launchDate = new Date("March 30, 2026 00:00:00").getTime();
+  const countdown = document.getElementById("countdown");
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    countdown.innerHTML = days + " Days " + hours + " Hours Remaining";
+  }, 1000);
+</script>
+
+</body>
+</html>
