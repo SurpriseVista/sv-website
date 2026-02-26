@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise Vista Solutions | Stewarding Ideas Into Businesses</title>
+  <meta name="description" content="Surprise Vista Solutions designs and grows product-led businesses with clarity, ethics, and long-term intent. Portfolio includes WorkLens and Surprise Vista Gifting.">
+  <meta name="keywords" content="business building, product development, B2B SaaS, WorkLens, gifting platform">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Surprise Vista Solutions | Premium Business Building">
+  <meta property="og:description" content="Stewarding ideas into businesses with clarity, ethics, and long-term intent.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.surprisevista.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+  <link rel="manifest" href="site.webmanifest">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --accent-soft: rgba(249, 115, 22, 0.08);
+      --muted: #64748b;
+      --muted-light: #94a3b8;
+      --bg: #fafaf9;
+      --card-bg: #ffffff;
+      --border: rgba(15, 23, 42, 0.06);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.03) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.03) 0, transparent 50%);
+      color: var(--primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============ NAVIGATION ============ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+      transition: opacity 0.3s;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    }
+
+    .nav-logo:hover {
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .nav-cta::after {
+      display: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      color: white !important;
+      transform: translateY(-2px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s;
+    }
+
+    /* Mobile Nav */
+    @media (max-width: 900px) {
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 32px;
+        gap: 24px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-120%);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+      }
+    }
+
+    /* ============ HEADER ============ */
+    header {
+      max-width: 1200px;
+      margin: auto;
+      padding: 180px 32px 100px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media(min-width: 900px) {
+      header {
+        grid-template-columns: 380px 1fr;
+        padding: 200px 32px 120px;
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo-container img {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+      transition: transform 0.6s ease;
+    }
+
+    .logo-container:hover img {
+      transform: scale(1.02) rotate(-1deg);
+    }
+
+    .header-content {
+      text-align: center;
+    }
+
+    @media(min-width: 900px) {
+      .header-content {
+        text-align: left;
+      }
+    }
+
+    .tagline {
+      display: inline-block;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 6px 20px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+    }
+
+    .header-content h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      margin: 0 0 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .header-content .subtitle {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: var(--muted);
+      font-weight: 400;
+      max-width: 600px;
+      line-height: 1.7;
+      margin: 0 auto 32px;
+    }
+
+    @media(min-width: 900px) {
+      .header-content .subtitle {
+        margin: 0 0 32px;
+      }
+    }
+
+    .header-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Crimson Pro', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ============ SECTIONS ============ */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 32px;
+    }
+
+    h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    /* ============ PORTFOLIO CARDS ============ */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #fbbf24);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-soft);
+    }
+
+    .product-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .product-logo {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      transition: all 0.4s ease;
+    }
+
+    .product-logo img {
+      max-width: 100%;
+      max-height: 100px;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-logo img {
+      transform: scale(1.05);
+    }
+
+    .product-card h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 28px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .product-card .product-type {
+      font-size: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .product-card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 15px;
+      transition: gap 0.3s ease;
+    }
+
+    .product-card:hover .product-link {
+      gap: 12px;
+    }
+
+    .product-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ============ PRINCIPLES ============ */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .principle-card {
+      padding: 36px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      border-left: 4px solid var(--accent);
+      font-weight: 600;
+      font-size: 17px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .principle-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .principle-card:hover {
+      transform: translateX(8px);
+      border-left-width: 6px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .principle-card:hover::before {
+      opacity: 1;
+    }
+
+    .principle-card span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============ ABOUT SECTION ============ */
+    .about-section {
+      background: var(--card-bg);
+      border-radius: 32px;
+      padding: 80px 60px;
+      margin: 100px auto;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content h2 {
+      margin-bottom: 24px;
+    }
+
+    .about-content p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .value-item {
+      text-align: center;
+    }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .value-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent);
+    }
+
+    .value-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .value-item p {
+      font-size: 14px;
+      color: var(--muted-light);
+      margin: 0;
+    }
+
+    /* ============ CTA SECTION ============ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+      color: white;
+      margin: 100px auto;
+      padding: 100px 60px;
+      text-align: center;
+      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      left: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 300;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(249, 115, 22, 0.4);
+    }
+
+    .cta-btn-secondary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .cta-btn-secondary:hover {
+      background: var(--bg);
+      transform: translateY(-3px);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 60px 32px 32px;
+      background: var(--primary);
+      color: var(--muted-light);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand img {
+      height: 48px;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1) opacity(0.8);
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-section h4 {
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .footer-bottom a {
+      color: var(--muted-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--accent);
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    [data-animate] {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Stagger delays */
+    [data-animate]:nth-child(1) { animation-delay: 0.1s; }
+    [data-animate]:nth-child(2) { animation-delay: 0.2s; }
+    [data-animate]:nth-child(3) { animation-delay: 0.3s; }
+    [data-animate]:nth-child(4) { animation-delay: 0.4s; }
+    [data-animate]:nth-child(5) { animation-delay: 0.5s; }
+    [data-animate]:nth-child(6) { animation-delay: 0.6s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-section,
+      .cta-section {
+        padding: 60px 32px;
+        margin: 60px 16px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav id="mainNav">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">
+      <img src="assets/sv-group.png" alt="Surprise Vista Solutions">
+    </a>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#principles">Principles</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Header -->
+<header id="home">
+  <div class="logo-container" data-animate>
+    <img src="assets/sv-group.png" alt="Surprise Vista Solutions">
+  </div>
+
+  <div class="header-content" data-animate>
+    <span class="tagline">Building businesses, the right way</span>
+    <h1>Surprise Vista Solutions</h1>
+    <p class="subtitle">
+      We design and grow product-led businesses with clarity, ethics, and long-term intent. 
+      Building foundations for independence and responsibility.
+    </p>
+    
+    <div class="header-stats">
+      <div class="stat-item">
+        <span class="stat-number">2</span>
+        <span class="stat-label">Active Products</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Ethical Focus</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Long-term</span>
+        <span class="stat-label">Vision</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+  <h2 data-animate>Our Portfolio</h2>
+  <p class="section-subtitle" data-animate>
+    Building products that matter, with purpose and precision.
+  </p>
+
+  <div class="portfolio-grid"> 
+      <a href="https://worklens.surprisevista.com"
+   class="product-card"
+   data-animate
+   target="_blank"
+   rel="noopener">
+
+  <div class="product-logo">
+    <img src="assets/worklens.png" alt="WorkLens Logo">
+  </div>
+
+  <span class="product-type">B2B SaaS Platform</span>
+
+  <h3>WorkLens</h3>
+
+  <p>
+    A B2B SaaS platform focused on workforce visibility and trust.
+    Built for organizations that value clarity and transparency.
+  </p>
+
+  <span class="product-link">
+    Explore WorkLens →
+  </span>
+
+</a>
+
+    <a href="https://gifting.surprisevista.com" class="product-card" data-animate target="_blank" rel="noopener">
+      <div class="product-logo">
+        <img src="assets/gifting.png" alt="Surprise Vista Gifting Logo">
+      </div>
+      <span class="product-type">Gifting Platform</span>
+      <h3>Surprise Vista Gifting</h3>
+      <p>
+        A thoughtful gifting platform focused on emotion, personalization, and meaningful experiences. 
+        Making every gift count.
+      </p>
+      <span class="product-link">
+        Explore Gifting
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- Principles Section -->
+<section id="principles">
+  <h2 data-animate>Core Principles</h2>
+  <p class="section-subtitle" data-animate>
+    The values that guide everything we build.
+  </p>
+
+  <div class="principles-grid">
+    <div class="principle-card" data-animate>
+      <span>Product before hype</span>
+    </div>
+    <div class="principle-card" data-animate>
+      <span>Ethics over shortcuts</span>
+    </div>
+    <div class="principle-card" data-animate>
+      <span>Focus over fragmentation</span>
+    </div>
+    <div class="principle-card" data-animate>
+      <span>Systems over dependency</span>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="about-section">
+    <div class="about-content">
+      <h2>Stewarding Ideas Into Businesses</h2>
+      <p>
+        At Surprise Vista Solutions, we believe in building businesses the right way. 
+        Not chasing trends, not cutting corners, but creating sustainable products with real value.
+      </p>
+      <p>
+        Our approach combines thoughtful design, ethical practices, and long-term vision to 
+        create businesses that stand the test of time.
+      </p>
+
+      <div class="about-values">
+        <div class="value-item">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h4>Clarity</h4>
+          <p>Clear vision, transparent execution</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h4>Ethics</h4>
+          <p>Doing what's right, always</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h4>Long-term</h4>
+          <p>Building for the future</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact">
+  <div class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Build Something Meaningful?</h2>
+      <p>
+        Let's discuss how we can help bring your vision to life with clarity, 
+        ethics, and purpose.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:info@surprisevista.com" class="cta-btn cta-btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Partner With Us
+        </a>
+        <a href="#portfolio" class="cta-btn cta-btn-secondary">
+          View Our Work
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <img src="assets/sv-group.png" alt="Surprise Vista Solutions">
+      <p>Stewarding ideas into businesses with clarity, ethics, and long-term intent.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Products</h4>
+      <ul class="footer-links">
+        <li><a href="https://worklens.surprisevista.com" target="_blank" rel="noopener">WorkLens</a></li>
+        <li><a href="https://gifting.surprisevista.com" target="_blank" rel="noopener">Surprise Vista Gifting</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#principles">Our Principles</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:info@surprisevista.com">info@surprisevista.com</a></li>
+        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2025 Surprise Vista Solutions. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> · 
+      <a href="#">Terms of Service</a>
+    </div>
+    <div>www.surprisevista.com</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Navigation Toggle
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Close mobile nav when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Navbar scroll effect
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const navHeight = nav.offsetHeight;
+          const targetPosition = target.offsetTop - navHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
