@@ -6,145 +6,516 @@
   <title>Surprise Vista Gifting Solutions | Coming Soon</title>
   <meta name="description" content="Surprise Vista Gifting Solutions is launching soon. Personalized gifting experiences designed to unbox happiness."/>
   <link rel="icon" href="favicon.png"/>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #FF5C3A;
+      --purple: #4B2DA8;
+      --cream: #FDF6EE;
+      --soft-orange: #FF8C69;
+      --dark: #1A0A2E;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #ff7a59, #ff4d6d);
-      color: white;
-      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
     }
 
+    /* ── Animated background ── */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--coral); top: -150px; right: -100px; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--purple); bottom: -100px; left: -80px; animation-delay: -4s; }
+    .blob-3 { width: 300px; height: 300px; background: var(--soft-orange); top: 40%; left: 40%; animation-delay: -8s; }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    /* Confetti particles */
+    .confetti-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      animation: fall linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ── Layout ── */
     .container {
+      position: relative;
+      z-index: 1;
       max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    .logo {
-      max-width: 280px;
-      margin-bottom: 30px;
+    /* ── Logo ── */
+    .logo-wrap {
+      margin-bottom: 48px;
+      animation: fadeDown 0.8s ease both;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+      display: block;
+    }
+
+    /* ── Hero text ── */
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 16px;
+      animation: fadeDown 0.8s 0.1s ease both;
     }
 
     h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 42px;
-      margin-bottom: 15px;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 8vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 20px;
+      animation: fadeDown 0.8s 0.2s ease both;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--coral);
     }
 
     .subtitle {
-      font-size: 20px;
-      opacity: 0.9;
-      margin-bottom: 50px;
+      font-size: 18px;
+      font-weight: 300;
+      color: #6B5E7A;
+      max-width: 480px;
+      text-align: center;
+      line-height: 1.65;
+      margin-bottom: 56px;
+      animation: fadeDown 0.8s 0.3s ease both;
     }
 
+    /* ── Countdown ── */
+    .countdown-wrap {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 64px;
+      animation: fadeDown 0.8s 0.4s ease both;
+    }
+
+    .cd-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: white;
+      border: 1.5px solid rgba(75, 45, 168, 0.12);
+      border-radius: 20px;
+      padding: 20px 28px;
+      box-shadow: 0 8px 32px rgba(75, 45, 168, 0.08);
+      min-width: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cd-block::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--coral), var(--purple));
+    }
+
+    .cd-num {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .cd-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9B8FB0;
+      margin-top: 6px;
+    }
+
+    .cd-sep {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      color: var(--coral);
+      opacity: 0.5;
+      align-self: center;
+      margin-bottom: 20px;
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    @keyframes pulse { from { opacity: 0.3; } to { opacity: 0.8; } }
+
+    /* ── Feature cards ── */
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 30px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 64px;
+      animation: fadeUp 0.8s 0.5s ease both;
     }
 
     .feature {
-      background: rgba(255,255,255,0.15);
-      padding: 30px;
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
+      background: white;
+      border: 1.5px solid rgba(75, 45, 168, 0.1);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 24px rgba(75, 45, 168, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(75, 45, 168, 0.14);
+    }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .fi-1 { background: #FFF0EC; }
+    .fi-2 { background: #EEF0FF; }
+    .fi-3 { background: #FFF5F0; }
 
     .feature h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 10px;
+      color: var(--dark);
     }
 
-    .countdown {
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 40px;
+    .feature p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #7A6E8A;
+      font-weight: 300;
     }
 
-    .email-box input {
-      padding: 14px;
-      width: 260px;
-      border-radius: 30px;
+    /* ── Email form ── */
+    .email-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+
+    .email-label {
+      font-size: 14px;
+      color: #9B8FB0;
+      font-weight: 300;
+    }
+
+    .email-row {
+      display: flex;
+      gap: 0;
+      background: white;
+      border: 1.5px solid rgba(75, 45, 168, 0.15);
+      border-radius: 50px;
+      padding: 6px;
+      box-shadow: 0 8px 32px rgba(75, 45, 168, 0.10);
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .email-row input {
+      flex: 1;
       border: none;
       outline: none;
+      padding: 12px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      background: transparent;
+      color: var(--dark);
     }
 
-    .email-box button {
-      padding: 14px 24px;
-      border-radius: 30px;
+    .email-row input::placeholder { color: #C0B4D0; }
+
+    .email-row button {
+      padding: 12px 26px;
+      border-radius: 40px;
       border: none;
-      background: #fff;
-      color: #ff4d6d;
-      font-weight: bold;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-
-    footer {
-      margin-top: 60px;
+      background: linear-gradient(135deg, var(--coral), #E8405F);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
       font-size: 14px;
-      opacity: 0.8;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
     }
 
+    .email-row button:hover { opacity: 0.88; transform: scale(1.03); }
+
+    /* ── Social ── */
+    .social-row {
+      display: flex;
+      gap: 14px;
+      animation: fadeUp 0.8s 0.7s ease both;
+    }
+
+    .social-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(75, 45, 168, 0.15);
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple);
+      text-decoration: none;
+      font-size: 18px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .social-btn:hover {
+      background: var(--purple);
+      color: white;
+      border-color: var(--purple);
+      transform: translateY(-3px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: auto;
+      padding-top: 48px;
+      font-size: 13px;
+      color: #9B8FB0;
+      font-weight: 300;
+      animation: fadeUp 0.8s 0.8s ease both;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Success toast ── */
+    .toast {
+      position: fixed;
+      bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--dark);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 600px) {
+      .countdown-wrap { gap: 8px; }
+      .cd-block { padding: 16px 16px; min-width: 70px; }
+      .cd-num { font-size: 32px; }
+      .cd-sep { font-size: 26px; }
+      .email-row { max-width: 100%; }
+    }
   </style>
 </head>
-
 <body>
 
+  <!-- Animated bg -->
+  <div class="bg-canvas">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="confetti-container" id="confetti"></div>
+
   <div class="container">
-    <img src="logo.png" alt="Surprise Vista Logo" class="logo"/>
 
-    <h1>Surprise Vista Gifting Solutions</h1>
-    <div class="subtitle">Unbox Happiness. Launching Soon.</div>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Surprise Vista Logo" />
+    </div>
 
+    <div class="eyebrow">✦ Something wonderful is coming</div>
+
+    <h1>Gift Moments That<br/><em>Truly Matter</em></h1>
+
+    <p class="subtitle">
+      We're crafting a gifting experience unlike anything before — personalized, heartfelt, and delivered with love.
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="cd-block"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hours</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Minutes</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Seconds</span></div>
+    </div>
+
+    <!-- Features -->
     <div class="features">
       <div class="feature">
-        <h3>🎁 Personalized Gifting</h3>
-        <p>Curated gift experiences tailored to emotions and occasions.</p>
+        <div class="feature-icon fi-1">🎁</div>
+        <h3>Personalized Gifting</h3>
+        <p>Curated gift experiences tailored to emotions, occasions, and the people who matter most to you.</p>
       </div>
-
       <div class="feature">
-        <h3>🚚 Seamless Delivery</h3>
-        <p>Reliable and elegant packaging delivered on time, every time.</p>
+        <div class="feature-icon fi-2">🚚</div>
+        <h3>Seamless Delivery</h3>
+        <p>Elegant packaging and reliable logistics — your gift arrives perfect, every single time.</p>
       </div>
-
       <div class="feature">
-        <h3>💝 Corporate & Bulk Solutions</h3>
-        <p>Smart gifting solutions for teams, clients, and celebrations.</p>
+        <div class="feature-icon fi-3">💝</div>
+        <h3>Corporate & Bulk</h3>
+        <p>Smart gifting solutions designed for teams, clients, and milestone celebrations at scale.</p>
       </div>
     </div>
 
-    <div class="countdown" id="countdown"></div>
-
-    <div class="email-box">
-      <input type="email" placeholder="Enter your email" />
-      <button>Notify Me</button>
+    <!-- Email capture -->
+    <div class="email-section">
+      <p class="email-label">Be the first to know when we launch 🎉</p>
+      <div class="email-row">
+        <input type="email" id="emailInput" placeholder="your@email.com" />
+        <button onclick="handleNotify()">Notify Me</button>
+      </div>
     </div>
 
-    <footer>
-      © 2026 Surprise Vista Gifting Solutions
-    </footer>
+    <!-- Social links -->
+    <div class="social-row">
+      <a href="#" class="social-btn" title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="Twitter/X">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" class="social-btn" title="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+
+    <footer>© 2026 Surprise Vista Gifting Solutions · All rights reserved</footer>
   </div>
 
-<script>
-  const launchDate = new Date("March 30, 2026 00:00:00").getTime();
-  const countdown = document.getElementById("countdown");
+  <div class="toast" id="toast">🎉 You're on the list! We'll notify you soon.</div>
 
-  setInterval(() => {
-    const now = new Date().getTime();
-    const distance = launchDate - now;
+  <script>
+    // Confetti dots
+    const confettiContainer = document.getElementById('confetti');
+    const colors = ['#FF5C3A','#4B2DA8','#FF8C69','#FFD700','#FF69B4','#7B68EE'];
+    for (let i = 0; i < 28; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      const size = Math.random() * 8 + 4;
+      dot.style.cssText = `
+        width:${size}px; height:${size}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        left:${Math.random()*100}%;
+        top:${Math.random()*-20}%;
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*10}s;
+        border-radius:${Math.random()>0.5?'50%':'4px'};
+      `;
+      confettiContainer.appendChild(dot);
+    }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    // Countdown
+    const launchDate = new Date("March 30, 2026 00:00:00").getTime();
 
-    countdown.innerHTML = days + " Days " + hours + " Hours Remaining";
-  }, 1000);
-</script>
+    function updateCountdown() {
+      const now = Date.now();
+      const dist = launchDate - now;
+      if (dist < 0) {
+        document.querySelector('.countdown-wrap').innerHTML = '<div style="font-family:Fraunces,serif;font-size:28px;color:var(--coral)">We\'re Live! 🎉</div>';
+        return;
+      }
+      const d = Math.floor(dist / 864e5);
+      const h = Math.floor((dist % 864e5) / 36e5);
+      const m = Math.floor((dist % 36e5) / 6e4);
+      const s = Math.floor((dist % 6e4) / 1e3);
 
+      document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Notify
+    function handleNotify() {
+      const val = document.getElementById('emailInput').value.trim();
+      if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        document.getElementById('emailInput').style.outline = '2px solid #FF5C3A';
+        setTimeout(() => document.getElementById('emailInput').style.outline = '', 2000);
+        return;
+      }
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      document.getElementById('emailInput').value = '';
+    }
+
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleNotify();
+    });
+  </script>
 </body>
 </html>
