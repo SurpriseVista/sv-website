@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SurpriseVista — Unbox Happiness</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--coral:#FF6B4A;
+--violet:#4B2D9B;
+--cream:#FBF7F0;
+}
+
+body{
+font-family:'DM Sans',sans-serif;
+background:var(--cream);
+overflow:hidden;
+}
+
+/* ===== INTRO ===== */
+.intro{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--cream);
+z-index:9999;
+transition:opacity 1s ease;
+}
+
+.intro.hide{
+opacity:0;
+pointer-events:none;
+}
+
+/* Glow */
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:rgba(255,107,74,0.25);
+border-radius:50%;
+filter:blur(140px);
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+to{transform:scale(1.2);}
+}
+
+/* Logo intro */
+.logo-intro{
+width:180px;
+opacity:0;
+transform:scale(0.5);
+animation:logoReveal 1s ease forwards;
+}
+
+@keyframes logoReveal{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* ===== MAIN ===== */
+.main{
+opacity:0;
+transition:opacity 1s ease;
+padding:80px 20px 60px;
+text-align:center;
+}
+
+.main.show{
+opacity:1;
+}
+
+/* BIG HERO LOGO */
+.hero-logo{
+width:320px;
+max-width:90%;
+margin:auto;
+animation:floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+}
+
+/* Tagline */
+.tagline{
+margin-top:20px;
+font-family:'Playfair Display',serif;
+font-size:clamp(36px,5vw,52px);
+line-height:1.2;
+color:var(--violet);
+}
+
+.highlight{
+color:var(--coral);
+}
+
+/* Subtext */
+.sub{
+margin-top:20px;
+max-width:600px;
+margin-inline:auto;
+color:#666;
+font-size:18px;
+}
+
+/* CTA */
+.cta{
+margin-top:30px;
+}
+
+.cta a{
+background:linear-gradient(135deg,var(--coral),#E8405F);
+color:white;
+padding:14px 30px;
+border-radius:40px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.cta a:hover{
+transform:scale(1.05);
+}
+
+/* Features */
+.grid{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1000px;
+margin-inline:auto;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 6px 30px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* Footer */
+footer{
+margin-top:60px;
+color:#888;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="glow"></div>
+  <img src="logo.png" class="logo-intro">
+</div>
+
+<!-- MAIN -->
+<div class="main" id="main">
+
+  <!-- BIG LOGO HERO -->
+  <img src="logo.png" class="hero-logo">
+
+  <div class="tagline">
+    Unbox <span class="highlight">Happiness</span>
+  </div>
+
+  <p class="sub">
+    SurpriseVista crafts meaningful gifts — from party return gifts to premium corporate hampers. Beautifully curated and delivered across India.
+  </p>
+
+  <div class="cta">
+    <a href="https://gifting.surprisevista.com">
+      Explore Gifting →
+    </a>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      🎁 Personalized Gifts<br><br>
+      Tailored for every occasion
+    </div>
+
+    <div class="card">
+      🏢 Corporate Gifting<br><br>
+      Client & employee gifting solutions
+    </div>
+
+    <div class="card">
+      ✨ Curated Experiences<br><br>
+      Designed to impress & remember
+    </div>
+  </div>
+
+  <footer>
+    © 2026 SurpriseVista — Unbox Happiness
+  </footer>
+
+</div>
+
+<script>
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
+
+if(localStorage.getItem("seenIntro")){
+  intro.style.display="none";
+  main.classList.add("show");
+  document.body.style.overflow="auto";
+}else{
+  setTimeout(()=>{
+    intro.classList.add("hide");
+    main.classList.add("show");
+    document.body.style.overflow="auto";
+    localStorage.setItem("seenIntro",true);
+  },2500);
+}
+</script>
+
+</body>
+</html>
